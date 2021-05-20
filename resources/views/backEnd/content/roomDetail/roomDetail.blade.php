@@ -3,9 +3,10 @@
 @section('content')
 
 
-<div>
+<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
  <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ <h2 class="float-start text-light text-center border-buttom ">Room Details</h2>
+ <button type="button" class="btn btn-primary mt-5 mx-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add New Room</button>
 
 
@@ -19,6 +20,7 @@
         <th scope="col">Room Type</th>
         <th scope="col">Room Details</th>
         <th scope="col">Price</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
 
       </tr>
@@ -33,12 +35,14 @@
             <td>{{$request->room_type}}</td>
             <td>{{$request->room_detail}}</td>
             <td>{{$request->price}}</td>
+           <td>{{$request->status}}</td>
             
             <td>
-                <button type="button" class="btn btn-info text-white">Edit</button>
+            <a class="btn btn-success" href="{{route('roomDetailEdit', $request->id)}}"> Edit</a>
                 <a class="btn btn-danger" href="{{route('roomDetailDelete', $request->id)}}"> Delete</a>
 
             </td>
+            
         </tr>
         @endforeach
         </tbody>
@@ -92,4 +96,4 @@
     </div>
   </div>
 
-  @endsection;
+  @endsection

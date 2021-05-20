@@ -16,14 +16,6 @@
             <div class="form-group">
                 <label for="exampleInputName">Working Area</label>
                 <input  value="{{$employees->workingArea}}" name="workingArea" type="text" class="form-control" id="exampleInputName" placeholder="Enter Working Area">
-
-                {{-- <select class="form-select" name="workingArea_id">
-                    <option selected>Open this select Area</option>
-                    @foreach ($workingArea as $request)
-                        <option value="{{ $request->id }}">{{ $request->workingArea }}</option>
-                    @endforeach
-                </select> --}}
-
             </div>
 
                 </select>
@@ -53,7 +45,7 @@
 
         </div>
         <div class="form-footer">
-          {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+         
           <button type="submit" class="btn btn-primary" style="margin-left: 385px;">Register</button>
     </div>
 

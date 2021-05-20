@@ -35,7 +35,7 @@
 
         </div>
         <div class="form-footer">
-          {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+         
           <button type="submit" class="btn btn-primary" style="margin-left: 385px;">Register</button>
     </div>
 

@@ -49,12 +49,12 @@ class UserController extends Controller
         ]);
     }
 
-    //logout
-    // public function logout()
-    // {
-    //     Auth::logout();
+    // logout
+    public function logout()
+    {
+        Auth::logout();
 
-    //     return redirect()->route('dashboard')->with('success', 'Logout Successful.');
-    // }
+        return redirect()->route('login')->with('success', 'Logout Successful.');
+    }
 
 }

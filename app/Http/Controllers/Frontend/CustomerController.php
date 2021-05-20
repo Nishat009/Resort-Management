@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use App\Models\Student;
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
@@ -16,41 +16,28 @@ class CustomerController extends Controller
     public function registration(Request $request)
 
     {
+        // dd($request->all());
 
         $request->validate([
+            
            'name'=>'required',
            'email'=>'email|required|unique:users',
             'password'=>'required|min:6'
         ]);
-
-        User::create([
+        
+    $U=User::create([
            'name'=>$request->name,
            'email'=>$request->email,
            'password'=>bcrypt($request->password)
         ]);
+        Customer::create([
+            'user_id'=>$U->id,
+            'address'=>$request->address,
+            'contact'=>$request->contact,
+            
+         ]);
 
-        // $file_name='';
-
-        // //step1: check request has file?
-        // if($request->hasFile('student_image'))
-        // {
-        //     //file is valid or not
-        //     $file=$request->file('student_image');
-        //     if($file->isValid())
-        //     {
-        //         //generate unique file name
-        //         $file_name=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-
-        //         //store image into local directory
-        //         $file->storeAs('student',$file_name);
-        //     }
-
-        // }
-        // Student:: create([
-        //     'user_id'=>$user->id,
-        //     'image'=>$file_name
-
-        // ]);
+        
 
          return redirect()->back()->with('success','User Registration Successful.');
 
@@ -67,27 +54,40 @@ class CustomerController extends Controller
         //authenticate
         $credentials = $request->only('email', 'password');
 //        dd($credentials);
+        
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
-        }
-        return back()->withErrors([
-            'email' => 'Invalid email or password.',
-        ]);
 
-    }
+            if (auth()->user()->role == 'user') {
+                return redirect()->route('home');
+            }
+
+            
+
+                return back()->withErrors([
+                    'email' => 'Invalid Credentials.'
+                    ]);
+
+
+            }
+        }
+       
+    
 
 
     public function userLogout()
     {
         Auth::logout();
 
-        return redirect()->route('login.registration.form')->with('success','Logout Successful.');
+        return redirect()->route('home')->with('success','Logout Successful.');
 
     }
+    
     public function userProfile()
     {
-        return view('frontEnd.content.userProfile.userProfile');
+      $customers=Customer::where('user_id',auth()->user()->id)->first();
+        
+        return view('frontEnd.content.userProfile.userProfile',compact('customers'));
     }
 
 }

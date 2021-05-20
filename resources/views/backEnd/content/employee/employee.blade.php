@@ -2,9 +2,11 @@
 
 @section('content')
 
-<div>
+<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
+
  <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ <h2 class="float-start text-light text-center border-buttom ">Employee List</h2>
+ <button type="button" class="btn btn-primary mt-5 mx-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Register New Employee</button>
 
 
@@ -113,7 +115,7 @@
 
         </div>
         <div class="modal-footer">
-          {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+         
           <button type="submit" class="btn btn-primary" style="margin-right: 385px;">Register</button>
         </div>
 

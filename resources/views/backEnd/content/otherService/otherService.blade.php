@@ -1,11 +1,11 @@
 @extends('backend.main')
-
 @section('content')
 
+<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
 
-<div>
- <!-- Button trigger modal -->
- <button type="button" class="btn btn-primary mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<!-- Button trigger modal -->
+ <h2 class="float-start text-light text-center border-buttom ">List Of Services</h2>
+ <button type="button" class="btn btn-primary float-end mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add New Service</button>
 
 
@@ -92,4 +92,4 @@
     </div>
   </div>
 
-  @endsection;
+  @endsection

@@ -1,57 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div class="row">
-        <div class="col-md-6">
-            <div class=" ">
-                  <div class="row row-cols-1 row-cols-sm-2 g-3 ">
-                    <div class="col ">
-                            <h4 class="text-dark">Name:{{auth()->user()->name}} </h4>
-                            <p class="text-dark">User email:{{auth()->user()->email}} </p>
-                            <p class="text-dark">User email:{{auth()->user()->phone}} </p>
-                            <p class="text-dark">User email:{{auth()->user()->address}} </p>
+@extends('frontend.main')
 
+@section('content')
+<div class="row m-3">
+    <div class="col-md-10 m-auto">
 
-                      </div>
-                    </div>
-                  </div>
+        <div class="container d-flex justify-content-center">
+            <div class="profileCard p-3 py-4">
+                    <h3 class="mt-2">Name:{{auth()->user()->name}}</h3> <span class="mt-1 clearfix">User email:{{auth()->user()->email}}</span>
                 </div>
-
             </div>
         </div>
-        <div class="col-md-4 bg-warning">
-            <table class="table mt-5 pt-5 shadow rounded bg-light">
-                <thead>
-
-
-                  <!-- {{-- <tr>
-                    <th scope="col">serial</th>
-                    <th scope="col">course_name</th> --}}
-
-                  </tr>
-                </thead> -->
-                <!-- {{-- </thead>
-                @foreach ($course as $key=> $data)
-                <tbody>
-                  <tr>
-                    <th scope="row">{{$key+1}}</th>
-                    <td>{{$data->enrollCourse->course_name}}</td>
-                    <td>
-                        <a class="btn btn-info" href="{{route('studentViewLesson',$data->enrollCourse->id)}}">view lesson </a>
-                    </td>
-
-                  </tr>
-                  @endforeach --}} -->
-                </tbody>
-              </table>
+        </div>
         </div>
 
+        <div class="row">
+    <div style="background: lightseagreen" class="col-md-8 m-auto p-5 rounded shadow">
+        <table class="table mt-5 mb-5 p-5  rounded bg-light ">
+            <thead>
+
+
+              <tr>
+              <th scope="col">User mail</th>
+                <th scope="col">contact</th>
+                <th scope="col">address</th>
+               
+               
+
+              </tr>
+            </thead>
+           
+            <tbody>
+              <tr>
+               
+               <td>{{auth()->user()->email}}</td>
+                <td>{{$customers->contact}}</td>
+                <td>{{$customers->address}}</td>
+                <td>
+                 <a  href="{{route('reservationTable')}}"><i class="fas fa-eye"></i>
+                </td>
+               
+
+              </tr>
+
+             
+            </tbody>
+          </table>
+
     </div>
-</body>
-</html>
+
+</div>
+@endsection
+

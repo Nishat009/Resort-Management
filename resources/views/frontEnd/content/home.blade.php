@@ -2,8 +2,109 @@
 @section('content')
 
 
+<link href="css/slider.css" rel="stylesheet">
 
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<section class=" text-center fluid-container">
+
+
+   <div class="row">
+   <div >
+            <img style="height:450px;" src= {{asset('image/bg2.jpg')}} class="d-block w-100" alt="...">
+            <div class="col-lg-12 col-md-8 mx-auto static">
+                    <h1 class="fw-light fw-bolder text-info">Welcome To LastLine</h1>
+                    <p>
+                        @auth()
+                         <button class="btn btn-danger" style="color:white;">{{auth()->user()->name}}</button>
+                    @else
+                        <a class="btn btn-danger" href="{{route('login.registration.form')}}">Let's Start</a>
+                    @endauth
+                    </p>
+                </div>
+          </div>
+
+          
+   </div>
+          
+
+
+
+
+</div>
+</section>
+<!-- for room details -->
+<section id="roomDetails" class=" text-center border-bottom">
+    <div class="album py-5 bg-light mt-5">
+        <div class="fluid-container">
+
+            <div class="text-center">
+
+                <h2 style="color: #3A4256;" >See Our </h2>
+                <h3 style="color: #dd7140;" class="mb-5">Luxury Room</h3>
+                
+
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+@foreach($roomDetail as $data)
+
+                <div class="col mt-5">
+                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
+                        <img style="height:250px;width:269px;"src="{{url('/files/roomDetail/'.$data->file)}}"alt="Room image">
+                        <div class="card-body" >
+                            <p class="card-text">{{$data->room_type}}</p>
+                        
+                            <p class="card-text">{{$data->room_detail}}</p>
+                        </div>
+                        <a href="{{route('roomReservation', $data->id)}} ">Add Room</a>
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+    </section>
+    
+    <!-- for other services -->
+    <section  class=" text-center border-bottom">
+    <div class="album py-5 bg-light mt-5">
+        <div class="container">
+
+            <div class="text-center">
+
+                <h2 style="color: #3A4256;" >See Our Service That We Provide </h2>
+               
+                
+
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+<!-- for other services -->
+
+@foreach($otherService as $data)
+
+                <div class="col mt-5">
+                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
+                        <img style="height:250px;width:269px;"src="{{url('/files/otherService/'.$data->file)}}"alt="Service image">
+                        <div class="card-body" >
+                            <p class="card-text">{{$data->service_type}}</p>
+                        
+                            <p class="card-text">{{$data->service_detail}}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+</section>
+<section >
+    <div class="row pt-5 mt-5">
+    <div class="col-md-6 slider">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -42,73 +143,8 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<!-- for room details -->
-
-    <div class="album py-5 bg-light mt-5">
-        <div class="container">
-
-            <div class="text-center">
-
-                <h2 style="color: #3A4256;" >See Our </h2>
-                <h3 style="color: #dd7140;" class="mb-5">Luxury Room</h3>
-                
-
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-
-
-@foreach($roomDetail as $data)
-
-                <div class="col mt-5">
-                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
-                        <img style="height:250px;width:269px;"src="{{url('/files/roomDetail/'.$data->file)}}"alt="Room image">
-                        <div class="card-body" >
-                            <p class="card-text">{{$data->room_type}}</p>
-                        
-                            <p class="card-text">{{$data->room_detail}}</p>
-                        </div>
-                        <a href="{{route('roomReservation')}} ">Add Room</a>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-        </div>
     </div>
-    
-    <!-- for other services -->
-
-    <div class="album py-5 bg-light mt-5">
-        <div class="container">
-
-            <div class="text-center">
-
-                <h2 style="color: #3A4256;" >See Our Service That We Provide </h2>
-               
-                
-
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-<!-- for other services -->
-
-@foreach($otherService as $data)
-
-                <div class="col mt-5">
-                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
-                        <img style="height:250px;width:269px;"src="{{url('/files/otherService/'.$data->file)}}"alt="Service image">
-                        <div class="card-body" >
-                            <p class="card-text">{{$data->service_type}}</p>
-                        
-                            <p class="card-text">{{$data->service_detail}}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-        </div>
     </div>
+    </section>
 
 @endsection

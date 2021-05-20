@@ -9,8 +9,10 @@ use App\Models\OtherService;
 class HomeController extends Controller
 {
    public function home(){
-       $roomDetail=RoomDetail::all();
+       $roomDetail=RoomDetail::where('status','available')->get();
+     
        $otherService=OtherService::all();
+
        return view('frontEnd.content.home',compact('roomDetail','otherService'));
    }
 }

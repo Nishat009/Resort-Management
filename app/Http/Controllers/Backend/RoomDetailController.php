@@ -49,5 +49,19 @@ class RoomDetailController extends Controller
 
         return redirect()->back();
     }
+    public function roomDetailEdit($id)
+    {
+        $roomDetail = RoomDetail::find($id);
+     return view('backend.content.roomDetail.roomDetailEdit',compact('roomDetail'));
+    }
+    public function roomDetailUpdate(Request $request ,$id){
+        RoomDetail::find($id)->update([
+            'room_type'=>$request->room_type,
+            'price'=>$request->price,
+            'room_detail'=>$request->room_detail,
+            
+        ]);
+        return redirect()->route('roomDetail'); 
+    }
 
 }
