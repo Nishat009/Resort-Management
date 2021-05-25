@@ -1,6 +1,8 @@
 body{
     overflow-x: hidden;
 }
-.doctor-slider {
-    margin-top: 25px;}
-    
+.review{
+    color: rgb(203, 183, 218);
+    background-color: rgb(227, 250, 239);
+}
+

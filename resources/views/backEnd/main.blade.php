@@ -29,7 +29,11 @@
 <link href="/css/sidebar.css" rel="stylesheet">
 <link href="/css/dashboard.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
+ <link href="css/navbar.css" rel="stylesheet">
     <style>
+      body{
+        background-color: rgb(227, 250, 239);
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -47,7 +51,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+   
   </head>
   <body>
   @include('backend.partial.header')

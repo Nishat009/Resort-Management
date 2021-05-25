@@ -30,14 +30,14 @@
 
 </div>
 <!-- date section -->
-<section>
+<section class="border-bottom" style=" background-color: mintcream; ">
 @if (session()->has('error'))
         <div class="alert alert-danger d-flex justify-content-between">
             {{ session()->get('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-<div class="bg-light p-3">
+<div class=" p-3">
     <form action="{{ route('searchRoom') }}" method="GET">
 
         <div class="row mb-3">
@@ -73,13 +73,13 @@
 
     <!-- for other services -->
     
-    <section id="course" class=" text-center border-bottom">
+    <section style=" background-color: mintcream;" class="p-5 text-center border-bottom">
 
 
-<div  class="album py-5 bg-light">
-    <h1 class="fw-bolder text-info pb-3">See Our Service That We Provide</h1>
+<div style=" background-color: mintcream;">
+    <h1 class="pt-5" style=" font-family: 'Playfair Display SC', serif; color:salmon;">See Our Service That We Provide</h1>
     <div class="mb-5 pe-5">
-        <a href="{{route('viewAllServices')}}" class="btn btn-dark fw-bolder float-end  "> See More Courses  <i class="fas fa-arrow-right"></i></a>
+        <a href="{{route('viewAllServices')}}" class="btn fw-bolder float-end" style=" background-color: mintcream;border:1px solid black" >  <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
@@ -118,48 +118,38 @@
 
 <!-- review -->
 
+<section  style=" background-color: mintcream;" class="p-5 text-center border-bottom">
 
-<section>
- @foreach($review as $data)
-<Slider  className="container h-100 mt-5">
-       
-                <div className=" text-center mt-4 mb-4">
-                    
-                    <h1 className=" text">Name:{{$data->reviewUser->name}}</h1>
-                    <p className=" text">Email:{{$data->reviewUser->email}}</p>
-                    <p class="card-text">Rate:{{$data->rate}}</p>
-                             <p class="card-text">Opinion:{{$data->message}}</p>
-                    
-                </div>
-            
-        
-    </Slider>
-<!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+<div style=" background-color: mintcream;">
+    <h1  style=" font-family: 'Playfair Display SC', serif; color:salmon;">Our Clients Review</h1>
+   
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
 
 
 
 
+        @foreach($review as $data)
+<div class="card-group">
+        <div class="card">
+        <div style=" font-family: Girassol, cursive; color:black;" class="card-body review">
+        <h2 className="text">Name: {{$data->reviewUser->name}}</h2>
+        <p className=" text">Email: {{$data->reviewUser->email}}</p>
+        <p class="card-text">Rate: {{$data->rate}}</p>
+        <p class="card-text">Opinion: {{$data->message}}</p>
 
-                <div class="col mt-5">
-                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
-                        <div class="card-body" >
-                            <p class="card-text">Name:{{$data->reviewUser->name}}</p>
-                            <p class="card-text">Email:{{$data->reviewUser->email}}</p>
-                            <p class="card-text">Rate:{{$data->rate}}</p>
-                             <p class="card-text">Opinion:{{$data->message}}</p>
+                           
+        </div>
+        </div>
+</div>
 
-                        </div>
-                    </div>
-                </div> -->
                 @endforeach
 
-
-
-
-
-            <!-- </div>
+            
         </div>
-    </div> -->
-
+        </div>
+    </div>
+   
 </section>
 @endsection

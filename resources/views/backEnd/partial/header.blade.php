@@ -1,22 +1,29 @@
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fw-bolder bg-secondary" href="#"> Admin</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed bg-primary" type="button"
-        data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon "></span>
-    </button>
-    <!-- <input class="form-control form-control-light w-20" type="text" placeholder="Search" aria-label="Search"> -->
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
+
+<div class=" navbar animate-navbar" style=" background-color: mintcream;">
+    <header class="d-flex ms-auto   justify-content-between py-3  ">
+   
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="100" height="10" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+      </a>
+
+      
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-between mb-md-0">
+  
+        <li>
         @auth()
-            <span style="color:white;" data-feather="user"></span>
-            <span style="color:white; margin-right: 30px;">{{ auth()->user()->name }} </span>
-            <a class="btn btn-success" href="{{ route('logout') }}"> Logout</a>
+            <span style="color:black;" data-feather="user"></span>
+            <span style="color:black; margin-right: 30px;">{{ auth()->user()->name }} </span>
+            <a class="btn" style=" background-color: mintcream;border:1px solid black" href="{{ route('logout') }}"> Logout</a>
         @else
-            <a class="btn btn-success" href="{{ route('login') }}">Login</a>
+            <a class="btn " style=" background-color: mintcream;border:1px solid black" href="{{ route('login') }}">Login</a>
+
 
         @endauth
+        </li>
 
-    </li>
-</ul>
-</header>
+      </ul>
+
+    </header>
+  </div>
+
+
