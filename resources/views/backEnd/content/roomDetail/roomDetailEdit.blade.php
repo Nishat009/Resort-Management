@@ -2,12 +2,11 @@
 
 @section('content')
 
-
-
-<form method="post" action="{{route('roomDetailUpdate', $roomDetail->id)}}" enctype="multipart/form-data">
-@csrf
-@method('PUT')
-
+<form action="{{route('roomDetailUpdate', $roomDetail->id)}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputName"> Service Type</label>
                 <input value="{{$roomDetail->room_type}}" name="room_type" type="text" class="form-control" id="exampleInputName" placeholder="Enter Service Name">
@@ -25,6 +24,16 @@
             <input  value="{{$roomDetail->price}}" name="price" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
 
         </div>
+        <div class="form-group">
+            <label for="exampleInputName">Adult</label>
+            <input  value="{{$roomDetail->adult}}" name="price" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputName">  Children</label>
+            <input  value="{{$roomDetail->children}}" name="price" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
+
+        </div>
             
             
             <div class="form-group">
@@ -33,15 +42,17 @@
 
             </div>
 
-        </div>
-        <div class="form-footer">
-          {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-          <button type="submit" class="btn btn-primary" style="margin-left: 385px;">Register</button>
-    </div>
+                <br>
+                <button type="submit" class="btn btn-success">Submit</button>
 
+
+            </div>
+
+
+        </div>
     </form>
 
-      
-    </div>
-  </div>
+
+
+
   @endsection

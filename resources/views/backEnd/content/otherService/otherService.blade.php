@@ -19,26 +19,57 @@
         <th scope="col">Service Type</th>
         <th scope="col">Service Details</th>
         <th scope="col">Price</th>
+       
         <th scope="col">Action</th>
+
 
       </tr>
     </thead>
     <tbody>
     </div>
-     @foreach($otherService as $request)
+     @foreach($otherService as $key=> $request)
 
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{$key+1}}</th>
             <td><img src="{{url('/files/otherService/'.$request->file)}}" style="width:70px; height:60px;" ></td>
             <td>{{$request->service_type}}</td>
             <td>{{$request->service_detail}}</td>
             <td>{{$request->price}}</td>
             
             <td>
+
+            <div class="dropdown">
+                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Action
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        @if ($request->status == 'Published')
+                            <a class="btn" href="{{ route('completedUpdate', ['id' => $request->id, 'status' => 'Unpublished']) }}">Make Unpublished</a>
+                        @elseif ( $request->status == 'Unpublished')
+                            <a class="btn" href="{{ route('completedUpdate', ['id' => $request->id, 'status' => 'Published']) }}">Make Published</a>
+                        @else
+                            <a class="btn" href="">None</a>
+                        @endif
+                    </li>
+
+                    <li class="bg-info"><a class="btn" href="{{route('otherServiceEdit', $request->id)}}">Edit</span></a></li>
+                    <li class="bg-danger"><a class="btn btn-danger" href="{{route('otherServiceDelete', $request->id)}}">Delete</a></li>
+
+
+
+                </ul>
+            </div>
+
+
+        </td>
+
+            <!-- <td>
             <a class="btn btn-success" href="{{route('otherServiceEdit', $request->id)}}"> Edit</a>
                 <a class="btn btn-danger" href="{{route('otherServiceDelete', $request->id)}}"> Delete</a>
 
-            </td>
+            </td> -->
         </tr>
         @endforeach
         </tbody>
@@ -82,7 +113,7 @@
 
         </div>
         <div class="modal-footer">
-          {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+          
           <button type="submit" class="btn btn-primary" style="margin-right: 385px;">Register</button>
         </div>
 

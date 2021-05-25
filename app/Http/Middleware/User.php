@@ -20,11 +20,15 @@ class User
             if (Auth::user()->role == 'user') {
                 return $next($request);
             }
+
             else{
                 Auth::userLogout();
-                return redirect()->route('userLogin');
+                return redirect()->route('login.registration.form');
             }
 
         } 
+        else{
+            return redirect()->route('login.registration.form');
+        }
     }
 }

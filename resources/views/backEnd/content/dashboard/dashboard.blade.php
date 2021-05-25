@@ -5,12 +5,13 @@
     {{ session()->get('success') }}
 </div>
 @endif
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div class="dashboard">
+<div class="d-flex  justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
 <h1 class="h2">Dashboard</h1>
 </div>
 <div class="row">
 <div class="col-md-4 my-3">
-    <div class="card bg-success text-white shadow" style="width: 20rem;height:10rem;">
+    <div class="card  text-white shadow" style="width: 20rem;height:10rem; background-color:#D35F46 ; ">
         <div class="card-body">
             <h5 class="text-center"> <small>Number of Rooms</small></h5>
             <h1 class="text-center">{{$totalRoom}}</h1>
@@ -42,7 +43,14 @@
         </div>
     </div>
 </div>
-
+<div class="col-md-4 my-3">
+    <div class="card bg-dark text-white shadow" style="width: 20rem;height:10rem;">
+        <div class="card-body">
+            <h5 class="text-center"> <small>Total Image</small> </h5>
+            <h1 class="text-center">{{$totalImage}} </h1>
+        </div>
+    </div>
+</div>
 <div class="col-md-4 my-3">
     <div class="card bg-info text-white shadow" style="width: 20rem;height:10rem;">
         <div class="card-body">
@@ -63,3 +71,4 @@
 
 </div>
 @endsection
+</div>

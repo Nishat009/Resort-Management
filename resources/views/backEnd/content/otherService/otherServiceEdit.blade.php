@@ -2,12 +2,11 @@
 
 @section('content')
 
-
-
-<form method="post" action="{{route('otherServiceUpdate', $otherService->id)}}" enctype="multipart/form-data">
-@csrf
-@method('PUT')
-
+<form action="{{route('otherServiceUpdate', $otherService->id)}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputName"> Service Type</label>
                 <input value="{{$otherService->service_type}}" name="service_type" type="text" class="form-control" id="exampleInputName" placeholder="Enter Service Name">
@@ -32,16 +31,17 @@
                 <input  value="{{$otherService->file}}" name="file" type="file" class="form-control" id="exampleInputRePicture" placeholder="Enter Photo">
 
             </div>
+                <br>
+                <button type="submit" class="btn btn-success">Submit</button>
+
+
+            </div>
+
 
         </div>
-        <div class="form-footer">
-         
-          <button type="submit" class="btn btn-primary" style="margin-left: 385px;">Register</button>
-    </div>
-
     </form>
 
-      
-    </div>
-  </div>
+
+
+
   @endsection

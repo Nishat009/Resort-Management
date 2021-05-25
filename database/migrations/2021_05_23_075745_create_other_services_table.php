@@ -19,6 +19,7 @@ class CreateOtherServicesTable extends Migration
             $table->string('service_type');
             $table->string('service_detail');
             $table->string('price');
+            $table->string('status')->default('Published');
             $table->timestamps();
         });
     }

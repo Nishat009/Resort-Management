@@ -27,6 +27,7 @@
 
 <!-- custome css -->
 <link href="/css/sidebar.css" rel="stylesheet">
+<link href="/css/dashboard.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {

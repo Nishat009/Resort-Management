@@ -15,10 +15,9 @@ class CreateRoomReservationsTable extends Migration
     {
         Schema::create('room_reservations', function (Blueprint $table) {
             $table->id();
-           
-            $table->string('room_id');
-            $table->string('service_id');
-            $table->string('user_id');
+            $table->integer('room_id');
+            $table->integer('service_id')->nullable();
+            $table->integer('user_id');
             $table->string('checkIn_date');
             $table->string('checkOut_date');
             $table->string('adult');
@@ -27,8 +26,8 @@ class CreateRoomReservationsTable extends Migration
             $table->string('message');
             $table->string('price');
             $table->string('status')->default('pending');
+            $table->string('paid_status')->default('unpaid');
             $table->timestamps();
-            
         });
     }
 

@@ -37,6 +37,7 @@
                 <td>{{$customers->address}}</td>
                 <td>
                  <a  href="{{route('reservationTable')}}"><i class="fas fa-eye"></i>
+                 <a  href="{{route('writeReview')}}"><i class="fas fa-eye"></i>
                 </td>
                
 

@@ -65,4 +65,14 @@ class OtherServiceController extends Controller
         return redirect()->route('otherService'); 
     }
 
+    public function completedUpdate( $id, $status)
+    {
+        $otherService= OtherService::find($id);
+
+        $otherService->update(['status'=>$status]);
+
+        return redirect()->back();
+    }
+
+
 }

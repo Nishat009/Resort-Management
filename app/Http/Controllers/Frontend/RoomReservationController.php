@@ -13,12 +13,19 @@ class RoomReservationController extends Controller
     public function RoomReservation($id)
     {
         $reserve=RoomDetail::find($id);
-        $service=OtherService::all();
+        $service=OtherService::where('status','published')->get();
         return view('frontend.content.reservation.reservation',compact('reserve','service'));
     }
     public function reservation(Request $request)
     {
         //  dd($request->all());
+        $check=RoomReservation::where('room_id',$request->room_id)->where('checkIn_date',$request->checkIn_date)->first();
+        
+        if($check!=null){
+            
+             return redirect()->route('searchRoom')->with('success','already reserved');
+           
+        }
         $reserve=RoomDetail::find($request->room_id);
         $service=OtherService::find($request->service_id);
         $roomPricePerDay = $reserve->price; // room price in cents
@@ -27,8 +34,13 @@ class RoomReservationController extends Controller
      $fromDate = Carbon::createMidnightDate($request->checkOut_date);
 
     $diffDays = $fromDate->diffInDays($toDate); // 2
-   
-      $roomPrice = $diffDays * ($roomPricePerDay+$service->price); // 9980
+   if($service){
+        $roomPrice = $diffDays * ($roomPricePerDay+$service->price);
+   }
+   else{
+    $roomPrice = $diffDays * ($roomPricePerDay);
+   }
+      // 9980
        
             RoomReservation::create([
 
@@ -51,8 +63,29 @@ class RoomReservationController extends Controller
     }
     public function reservationTable(){
         $reserve=RoomReservation::where('user_id', auth()->user()->id)->get();
+        
         return view('frontEnd.content.Reservation.reservationTable',compact('reserve'));
     }
+    public function cancelUpdate( $id)
+    {
+        $reserve= RoomReservation::find($id);
+       $t= $reserve->checkIn_date;
+       $t=Carbon::create($t)->addDay();
+        
+       if($t>= Carbon::now()){
+      
+            $reserve->update([
+            'status'=>'requested for cancel'
+        ]); 
+        return redirect()->back();
+       }
+       else{
+           return redirect()->back()->with('error','you can not cancel the reservation');
+       }
+       
+
+       
+    }
    
-    
+   
 }

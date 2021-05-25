@@ -1,38 +1,27 @@
+
 @extends('frontend.main')
 
 @section('content')
-
-   
-
-
-<!-- reservation form -->
-    <div class="album py-5 bg-light">
-        <div>
-
-            @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
-            <h1>Book Room</h1>
+<h1> Room</h1>
             
-            <div class="container">
+            
            
             <h1>{{$reserve->room_type}}</h1>
             <p>{{$reserve->price}}</p>
-            </div>
-            <form method="post" action="{{route('reservation')}}" enctype="multipart/form-data" class="container mt-5 w-50 p-5 border shadow p-3 mb-5 bg-white">
+            <p>{{$reserve->adult}}</p>
+            
+            <form method="post" action="{{route('reservation')}}" enctype="multipart/form-data" class=" container mt-5 w-50 p-5 border shadow p-3 mb-5 bg-white">
             @csrf
             
             <input name="room_id" type="hidden" value="{{$reserve->id}}" class="form-control">
                 <div class="mb-3 ">
                 <div class="form-group">
                     <label for="">Check In</label>
-                    <input required name="checkIn_date" type="date" class="form-control">
+                    <input value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}" required name="checkIn_date" type="date" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Check Out</label>
-                    <input required name="checkOut_date" type="date" class="form-control">
+                    <input value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}" required name="checkOut_date" type="date" class="form-control">
                    
                 </div>
               <br/>
@@ -71,7 +60,9 @@
                 <br>
                 <div class="form-group">
                 <small>Additional service</small>
+                
                 @foreach ($service as $data)
+               
                     <div class="form-check">
                    
                     <input value="{{$data->id}}" name="service_id" class="form-check-input" type="checkbox" id="gridCheck">
@@ -82,6 +73,7 @@
                     
                     </div>
                     @endforeach
+                    
                 </div>
 
                 <div class="form-group mt-5">
@@ -90,6 +82,4 @@
 
             </div>
             </form>
-        </div>
-    </div>
-@endsection
+            @endsection

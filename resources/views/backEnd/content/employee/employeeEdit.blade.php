@@ -2,12 +2,11 @@
 
 @section('content')
 
-
-
-<form method="post" action="{{route('employeeUpdate', $employees->id)}}" enctype="multipart/form-data">
-@csrf
-@method('PUT')
-
+<form action="{{route('employeeUpdate', $employees->id)}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
                 <input value="{{$employees->name}}" name="name" type="text" class="form-control" id="exampleInputName" placeholder="Enter employee Name">
@@ -43,15 +42,19 @@
 
             </div>
 
-        </div>
-        <div class="form-footer">
-         
-          <button type="submit" class="btn btn-primary" style="margin-left: 385px;">Register</button>
-    </div>
 
+                <br>
+                <button type="submit" class="btn btn-success">Submit</button>
+
+
+            </div>
+
+
+        </div>
     </form>
 
-      
-    </div>
-  </div>
+
+
+
+
   @endsection

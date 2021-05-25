@@ -5,7 +5,7 @@
     <div class=" pt-3 ">
 
         <ul class="nav flex-column item-hover ">
-        @if (auth()->user()->role == 'admin')
+        
                 <li class="nav-item ">
                     <a class="nav-link active text-white" aria-current="page" href="{{route('dashboard')}}">
                         <span data-feather="home"></span>
@@ -39,7 +39,21 @@
 
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-white">
+                    <a class="nav-link text-white" href="{{route('gallery')}}">
+                        <i class="far fa-file-alt"></i>
+                      Gallery
+                    </a>
+
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="{{route('seeContact')}}">
+                        <i class="far fa-file-alt"></i>
+                      Contact
+                    </a>
+
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link text-white" href="{{route('report')}}">
                         <i class="far fa-file-alt"></i>
                       Report
                     </a>
@@ -58,7 +72,7 @@
 
             @endauth
           </li>
-          @endif
+         
         </ul>
     </div>
 </nav>

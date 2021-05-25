@@ -20,6 +20,8 @@
         <th scope="col">Room Type</th>
         <th scope="col">Room Details</th>
         <th scope="col">Price</th>
+        <th scope="col">Adult</th>
+        <th scope="col">Children</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
 
@@ -35,11 +37,35 @@
             <td>{{$request->room_type}}</td>
             <td>{{$request->room_detail}}</td>
             <td>{{$request->price}}</td>
+            <td>{{$request->adult}}</td>
+            <td>{{$request->children}}</td>
            <td>{{$request->status}}</td>
             
             <td>
-            <a class="btn btn-success" href="{{route('roomDetailEdit', $request->id)}}"> Edit</a>
-                <a class="btn btn-danger" href="{{route('roomDetailDelete', $request->id)}}"> Delete</a>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Action
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        @if ($request->publishedStatus == 'Published')
+                            <a class="btn" href="{{ route('roomUpdate', ['id' => $request->id, 'publishedStatus' => 'Unpublished']) }}">Make Unpublished</a>
+                        @elseif ( $request->publishedStatus == 'Unpublished')
+                            <a class="btn" href="{{ route('roomUpdate', ['id' => $request->id, 'publishedStatus' => 'Published']) }}">Make Published</a>
+                        @else
+                            <a class="btn" href="">None</a>
+                        @endif
+                    </li>
+
+                    <li class="bg-info"><a class="btn" href="{{route('roomDetailEdit', $request->id)}}">Edit</span></a></li>
+                    <li class="bg-danger"><a class="btn btn-danger" href="{{route('roomDetailDelete', $request->id)}}">Delete</a></li>
+
+
+
+                </ul>
+            </div>
+            
 
             </td>
             
@@ -75,6 +101,16 @@
             <div class="form-group">
                 <label for="exampleInputPhone">Price</label>
                 <input name="price" type="text" class="form-control" id="exampleInputPhone" placeholder="Enter Price">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPhone">Adult</label>
+                <input name="adult" type="text" class="form-control" id="exampleInputPhone" placeholder="Enter Number">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPhone">Children</label>
+                <input name="children" type="text" class="form-control" id="exampleInputPhone" placeholder="Enter Number">
 
             </div>
 

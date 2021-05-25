@@ -9,16 +9,15 @@
 
    <div class="row">
    <div >
-            <img style="height:450px;" src= {{asset('image/bg2.jpg')}} class="d-block w-100" alt="...">
+            <img style="height:550px;" src= {{asset('image/bg3.jpg')}} class="d-block w-100" alt="...">
             <div class="col-lg-12 col-md-8 mx-auto static">
-                    <h1 class="fw-light fw-bolder text-info">Welcome To LastLine</h1>
-                    <p>
-                        @auth()
-                         <button class="btn btn-danger" style="color:white;">{{auth()->user()->name}}</button>
-                    @else
-                        <a class="btn btn-danger" href="{{route('login.registration.form')}}">Let's Start</a>
-                    @endauth
-                    </p>
+                    <h1 style=" font-family: Girassol, cursive; color:black; margin-top:40px" class="fw-light fw-bolder "> LastLine</h1>
+                   
+                    
+      <div class="div-date">
+        <div id="myDateDisplay" class="date" onload="today()"></div>
+     </div>
+    
                 </div>
           </div>
 
@@ -30,121 +29,137 @@
 
 
 </div>
-</section>
-<!-- for room details -->
-<section id="roomDetails" class=" text-center border-bottom">
-    <div class="album py-5 bg-light mt-5">
-        <div class="fluid-container">
+<!-- date section -->
+<section>
+@if (session()->has('error'))
+        <div class="alert alert-danger d-flex justify-content-between">
+            {{ session()->get('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+<div class="bg-light p-3">
+    <form action="{{ route('searchRoom') }}" method="GET">
 
-            <div class="text-center">
-
-                <h2 style="color: #3A4256;" >See Our </h2>
-                <h3 style="color: #dd7140;" class="mb-5">Luxury Room</h3>
-                
-
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-
-
-@foreach($roomDetail as $data)
-
-                <div class="col mt-5">
-                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
-                        <img style="height:250px;width:269px;"src="{{url('/files/roomDetail/'.$data->file)}}"alt="Room image">
-                        <div class="card-body" >
-                            <p class="card-text">{{$data->room_type}}</p>
-                        
-                            <p class="card-text">{{$data->room_detail}}</p>
+        <div class="row mb-3">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row mb-3">
+                            <label for="from" class="col-sm-2 col-form-label fw-bolder">Date from:</label>
+                            <div class="col-sm-10">
+                                <input value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}"  id="from" type="date" class="form-control" name="checkIn_date">
+                            </div>
                         </div>
-                        <a href="{{route('roomReservation', $data->id)}} ">Add Room</a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row mb-3">
+                            <label for="to" class="col-sm-2 col-form-label fw-bolder">Date to:</label>
+                            <div class="col-sm-10">
+                                <input value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}" id="to" type="date" class="form-control" name="checkOut_date">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                @endforeach
+            </div>
 
+            <div class="col-md-2">
+                <button type="submit" class=" btn btn-primary text-white fw-bolder">Search</button>
+                
             </div>
         </div>
-    </div>
-    </section>
-    
+    </form>
+</div>
+</section>
+
     <!-- for other services -->
-    <section  class=" text-center border-bottom">
-    <div class="album py-5 bg-light mt-5">
-        <div class="container">
-
-            <div class="text-center">
-
-                <h2 style="color: #3A4256;" >See Our Service That We Provide </h2>
-               
-                
+    
+    <section id="course" class=" text-center border-bottom">
 
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div  class="album py-5 bg-light">
+    <h1 class="fw-bolder text-info pb-3">See Our Service That We Provide</h1>
+    <div class="mb-5 pe-5">
+        <a href="{{route('viewAllServices')}}" class="btn btn-dark fw-bolder float-end  "> See More Courses  <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
 
 <!-- for other services -->
 
-@foreach($otherService as $data)
 
-                <div class="col mt-5">
-                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
-                        <img style="height:250px;width:269px;"src="{{url('/files/otherService/'.$data->file)}}"alt="Service image">
-                        <div class="card-body" >
-                            <p class="card-text">{{$data->service_type}}</p>
+@foreach($otherService as $data)
+<div class="card-group">
+        <div class="card">
+        <img class="w-100 h-100" src="{{url('/files/otherService/'.$data->file)}}" class="card-img-top" alt="">
                         
-                            <p class="card-text">{{$data->service_detail}}</p>
+        <div class="card-body">
+                        <p class="card-text">Course Title: {{$data->service_type}}</p>
+                        <p class="card-text">{{$data->service_detail}}</p>
+                        <div class=" d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <small class="text-secodary">{{$data->price}} BDT</small>
+                            </div>
+
+                           
                         </div>
+                    </div>
                     </div>
                 </div>
                 @endforeach
 
             </div>
         </div>
+        </div>
     </div>
+   
 </section>
-<section >
-    <div class="row pt-5 mt-5">
-    <div class="col-md-6 slider">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner h-50">
-    <div class="carousel-item active">
-      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb3J0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="d-block w-100 image" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="d-block w-100 image" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://images.unsplash.com/photo-1542568190-441f9553ca64?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHJlc29ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="d-block w-100 image" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-    </div>
-    </div>
-    </section>
 
+
+<!-- review -->
+
+
+<section>
+ @foreach($review as $data)
+<Slider  className="container h-100 mt-5">
+       
+                <div className=" text-center mt-4 mb-4">
+                    
+                    <h1 className=" text">Name:{{$data->reviewUser->name}}</h1>
+                    <p className=" text">Email:{{$data->reviewUser->email}}</p>
+                    <p class="card-text">Rate:{{$data->rate}}</p>
+                             <p class="card-text">Opinion:{{$data->message}}</p>
+                    
+                </div>
+            
+        
+    </Slider>
+<!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+
+
+                <div class="col mt-5">
+                    <div class="card shadow-sm h-100" style="height:250px;width:270px;">
+                        <div class="card-body" >
+                            <p class="card-text">Name:{{$data->reviewUser->name}}</p>
+                            <p class="card-text">Email:{{$data->reviewUser->email}}</p>
+                            <p class="card-text">Rate:{{$data->rate}}</p>
+                             <p class="card-text">Opinion:{{$data->message}}</p>
+
+                        </div>
+                    </div>
+                </div> -->
+                @endforeach
+
+
+
+
+
+            <!-- </div>
+        </div>
+    </div> -->
+
+</section>
 @endsection

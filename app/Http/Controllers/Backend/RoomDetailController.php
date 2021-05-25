@@ -33,6 +33,8 @@ class RoomDetailController extends Controller
         RoomDetail:: create([
             'room_type'=>$request->room_type,
             'price'=>$request->price,
+            'adult'=>$request->adult,
+            'children'=>$request->children,
             'room_detail'=>$request->room_detail,
             'file'=>$file_name ]);
         return redirect()->back();
@@ -58,10 +60,39 @@ class RoomDetailController extends Controller
         RoomDetail::find($id)->update([
             'room_type'=>$request->room_type,
             'price'=>$request->price,
+            'adult'=>$request->adult,
+            'children'=>$request->children,
             'room_detail'=>$request->room_detail,
             
         ]);
         return redirect()->route('roomDetail'); 
     }
+
+    public function searchRoom(){
+        
+        $search =[];
+        if(isset($_GET['checkIn_date']))
+        {
+            $checkInDate = date('Y-m-d',strtotime($_GET['checkIn_date']));
+            $checkOutDate = date('Y-m-d',strtotime($_GET['checkOut_date']));
+            if($checkOutDate<$checkInDate){
+                return redirect()->back()->with('error','checkOut date is not correct');
+            }
+            $search = RoomDetail::whereNotBetween('checkIn_date',[$checkInDate,$checkOutDate])
+             ->whereNotBetween('checkOut_date',[$checkInDate,$checkOutDate])->where('publishedStatus','published')->get();
+            
+        }
+        return view('frontend.content.searchRoom',compact('search'));
+        
+    }
+    public function RoomUpdate( $id, $status)
+    {
+        $roomDetail= RoomDetail::find($id);
+
+        $roomDetail->update(['publishedStatus'=>$status]);
+
+        return redirect()->back();
+    }
+
 
 }

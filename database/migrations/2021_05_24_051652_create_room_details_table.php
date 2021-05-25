@@ -18,8 +18,13 @@ class CreateRoomDetailsTable extends Migration
             $table->text('file')->nullable();
             $table->string('room_type');
             $table->string('room_detail');
+            $table->date('checkIn_date')->default('2020-01-01');
+            $table->date('checkOut_date')->default('2020-01-01');
             $table->string('price');
+            $table->string('adult');
+            $table->string('children');
             $table->string('status')->default('available');
+            $table->string('publishedStatus')->default('Published');
             $table->timestamps();
         });
     }
