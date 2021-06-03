@@ -37,6 +37,9 @@ class RoomReservationController extends Controller
      $fromDate = Carbon::createMidnightDate($request->checkOut_date);
 
     $diffDays = $fromDate->diffInDays($toDate); // 2
+  if($diffDays==0){
+      $diffDays=1;
+  }
    if($service){
         $roomPrice = $diffDays * ($roomPricePerDay+$service->price);
    }
@@ -44,7 +47,7 @@ class RoomReservationController extends Controller
     $roomPrice = $diffDays * ($roomPricePerDay);
    }
       
-       
+     
             RoomReservation::create([
 
                 'checkIn_date'=>$request->checkIn_date,
