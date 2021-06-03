@@ -22,7 +22,9 @@ class CreateRoomReservationsTable extends Migration
             $table->string('checkOut_date');
             $table->string('adult');
             $table->string('children');
-            $table->string('room');
+            $table->string('t_id');
+            $table->string('t_phone');
+            $table->string('payment_method');
             $table->string('message');
             $table->string('price');
             $table->string('status')->default('pending');

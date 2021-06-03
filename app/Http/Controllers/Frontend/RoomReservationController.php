@@ -30,6 +30,9 @@ class RoomReservationController extends Controller
         $service=OtherService::find($request->service_id);
         $roomPricePerDay = $reserve->price; // room price in cents
 
+        if($request->adult>$reserve->adult ){
+            return redirect()->back()->with('error', 'room capacity overloaded');
+        }
      $toDate = Carbon::createMidnightDate($request->checkIn_date);
      $fromDate = Carbon::createMidnightDate($request->checkOut_date);
 
@@ -40,7 +43,7 @@ class RoomReservationController extends Controller
    else{
     $roomPrice = $diffDays * ($roomPricePerDay);
    }
-      // 9980
+      
        
             RoomReservation::create([
 
@@ -48,13 +51,14 @@ class RoomReservationController extends Controller
                 'checkOut_date'=>$request->checkOut_date,
                 'adult'=>$request->adult,
                 'children'=>$request->children,
-                'room'=>$request->room,
                 'message'=>$request->message,
                 'room_id'=>$request->room_id,
                 'price'=>$roomPrice,
                 'service_id'=>$request->service_id,
-                'user_id'=>auth()->user()->id
-                
+                'user_id'=>auth()->user()->id,
+                't_id'=>$request->t_id,
+                't_phone'=>$request->contact,
+                'payment_method'=>$request->payment_method,
             ]);
            
             $reserve->update(['status'=>'requested for reserve']);
@@ -86,6 +90,9 @@ class RoomReservationController extends Controller
 
        
     }
+// payment
    
+
+    
    
 }

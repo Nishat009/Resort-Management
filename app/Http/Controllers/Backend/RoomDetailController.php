@@ -57,7 +57,30 @@ class RoomDetailController extends Controller
      return view('backend.content.roomDetail.roomDetailEdit',compact('roomDetail'));
     }
     public function roomDetailUpdate(Request $request ,$id){
-        RoomDetail::find($id)->update([
+        
+
+     $roomImage=RoomDetail::find($id);
+     if ($request->hasFile('file')) {
+
+        $image_path = public_path().'/files/roomDetail/' . $roomImage->image;
+
+        if ($roomImage->image) {
+            unlink($image_path);
+        }
+
+            $file_name='';
+
+            $file = $request -> file('file');
+            if ($file -> isValid()) {
+                $file_name = date('Ymdhms').'.'.$file -> getClientOriginalExtension();
+                $file -> storeAs('roomDetail',$file_name);
+            }
+            $roomImage->update([
+                'file' => $file_name
+            ]);
+            }
+
+     $roomImage->update([
             'room_type'=>$request->room_type,
             'price'=>$request->price,
             'adult'=>$request->adult,
@@ -78,8 +101,13 @@ class RoomDetailController extends Controller
             if($checkOutDate<$checkInDate){
                 return redirect()->back()->with('error','checkOut date is not correct');
             }
-            $search = RoomDetail::whereNotBetween('checkIn_date',[$checkInDate,$checkOutDate])
-             ->whereNotBetween('checkOut_date',[$checkInDate,$checkOutDate])->where('publishedStatus','published')->get();
+            $search = RoomDetail::whereNotIn('id', function($query) use ($checkInDate, $checkOutDate){
+                $query->from('room_reservations')
+                ->select('room_id')
+                ->whereBetween('checkIn_date', [$checkInDate, $checkOutDate])
+                ->orWhereBetween('checkOut_date', [$checkInDate, $checkOutDate]);
+            })->get();
+            
             
         }
         return view('frontend.content.searchRoom',compact('search'));

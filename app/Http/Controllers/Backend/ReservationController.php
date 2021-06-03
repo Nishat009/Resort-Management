@@ -49,14 +49,14 @@ class ReservationController extends Controller
                 'paid_status' => $status,
                 
             ]);
-            // Mail::to($customer->email)->send(new ReservationConfirm($reservation));
+            Mail::to($customer->email)->send(new ReservationCancel($reservationCancel));
         }else{
             $reservation->update([
                 'status' => 'confirm',
                 'paid_status' => $status
                
             ]);
-            // Mail::to($customer->email)->send(new ReservationCancel($reservation));
+            Mail::to($customer->email)->send(new ReservationConfirm($reservation));
             
             RoomDetail::find($reservation->room_id)->update([ 'checkIn_date'=>$reservation->checkIn_date,
             'checkOut_date'=>$reservation->checkOut_date]);

@@ -3,16 +3,16 @@
 @section('content')
 
 
-<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
+<div  style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
  <!-- Button trigger modal -->
- <h2 class="float-start text-light text-center border-buttom ">Room Details</h2>
- <button type="button" class="btn btn-primary mt-5 mx-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ <h2 class="float-start text-dark text-center border-buttom ">Room Details</h2>
+ <button style=" background-color:#BB2D3B" type="button" class="btn text-light mt-5 mx-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add New Room</button>
 
 
 
 {{--Room Details Details table --}}
-<table class="table my-3 " style="margin-right: 200px;">
+<table class="table table-hover table-striped table-es-sm table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -29,10 +29,10 @@
     </thead>
     <tbody>
     </div>
-     @foreach($roomDetail as $request)
+     @foreach($roomDetail as $key=> $request)
 
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{$key+1}}</th>
             <td><img src="{{url('/files/roomDetail/'.$request->file)}}" style="width:70px; height:60px;" ></td>
             <td>{{$request->room_type}}</td>
             <td>{{$request->room_detail}}</td>
@@ -45,7 +45,7 @@
             <div class="dropdown">
                 <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    Action
+                    <i class="bi bi-arrow-down-left-circle"></i>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li>

@@ -1,17 +1,17 @@
 @extends('backend.main')
 @section('content')
 
-<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
+<div style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
 
 <!-- Button trigger modal -->
- <h2 class="float-start text-light text-center border-buttom ">List Of Picture</h2>
- <button type="button" class="btn btn-primary float-end mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ <h2 class="float-start text-dark text-center border-buttom ">List Of Picture</h2>
+ <button style=" background-color:#BB2D3B" type="button" class="btn text-light float-end mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add New Image</button>
 
 
 
 {{--gallery Details table --}}
-<table class="table my-3 " style="margin-right: 200px;">
+<table class="table table-hover table-striped table-es-sm table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -38,6 +38,8 @@
         </tr>
         @endforeach
         </tbody>
+</table>
+{{$gallery->links()}}
    
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -16,10 +16,10 @@ class ReservationCancel extends Mailable
      *
      * @return void
      */
-    protected $reservation;
-    public function __construct($reservation)
+    protected $reservationCancel;
+    public function __construct($reservationCancel)
     {
-        $this -> reservation = $reservation;
+        $this -> reservationCancel = $reservationCancel;
 
     }
 
@@ -30,6 +30,6 @@ class ReservationCancel extends Mailable
      */
     public function build()
     {
-        return $this->view('backEnd.content.email.cancelEmail')->with(['reservationData'=>$this -> reservation]);
+        return $this->view('backEnd.content.email.cancelEmail')->with(['reservationData'=>$this -> reservationCancel]);
     }
 }

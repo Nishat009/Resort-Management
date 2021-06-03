@@ -27,11 +27,15 @@
                     <div class="card shadow-sm h-100" style="height:250px;width:270px;">
                         <img style="height:250px;width:269px;"src="{{url('/files/roomDetail/'.$data->file)}}"alt="Room image">
                         <div class="card-body" >
-                            <p class="card-text">{{$data->room_type}}</p>
+                            <p class="card-text"> Room type: {{$data->room_type}}</p>
                         
-                            <p class="card-text">{{$data->room_detail}}</p>
+                            <p class="card-text">Room Detail: {{$data->room_detail}}</p>
+                            <p class="card-text">Price: {{$data->price}}</p>
                         </div>
-                        <a href="{{route('roomReservation', $data->id)}} ">Add Room</a>
+                       
+
+                        <a class ="btn "style=" background-color: mintcream;border:1px solid black" href="{{route('roomReservation', $data->id)}} ">Reserve Room</a>
+                      
                     </div>
                 </div>
                 @endforeach

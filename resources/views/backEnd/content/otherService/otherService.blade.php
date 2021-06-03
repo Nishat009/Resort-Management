@@ -1,17 +1,17 @@
 @extends('backend.main')
 @section('content')
 
-<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
+<div style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
 
 <!-- Button trigger modal -->
- <h2 class="float-start text-light text-center border-buttom ">List Of Services</h2>
- <button type="button" class="btn btn-primary float-end mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+ <h2 class="float-start text-dark text-center border-buttom ">List Of Services</h2>
+ <button style=" background-color:#BB2D3B  " type="button" class="btn text-white  float-end mt-5 mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add New Service</button>
 
 
 
 {{--other service Details table --}}
-<table class="table my-3 " style="margin-right: 200px;">
+<table class="table table-hover table-striped table-es-sm table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -41,7 +41,7 @@
             <div class="dropdown">
                 <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    Action
+                    <i class="bi bi-arrow-down-left-circle"></i>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li>

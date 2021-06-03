@@ -1,54 +1,61 @@
 @extends('frontend.main')
 
 @section('content')
-<div class="row m-3">
-    <div class="col-md-10 m-auto">
 
-        <div class="container d-flex justify-content-center">
-            <div class="profileCard p-3 py-4">
-                    <h3 class="mt-2">Name:{{auth()->user()->name}}</h3> <span class="mt-1 clearfix">User email:{{auth()->user()->email}}</span>
+<link href="css/userProfile.css" rel="stylesheet">
+
+
+
+<div class=" container d-flex justify-content-end m-5 col-md-8 profile"  >
+              <div class="card mb-3" style="width:450px;"  >
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{auth()->user()->name}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{auth()->user()->email}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{$customers->contact}}
+                    </div>
+                  </div>
+                  <hr>
+                 
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{$customers->address}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info "   href="{{route('reservationTable')}}">Reservation</a>
+                      <a class="btn btn-info justify-content-end " href="{{route('writeReview')}}">Review</a>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-        </div>
-        </div>
-
-        <div class="row">
-    <div style="background: lightseagreen" class="col-md-8 m-auto p-5 rounded shadow">
-        <table class="table mt-5 mb-5 p-5  rounded bg-light ">
-            <thead>
+              </div>
 
 
-              <tr>
-              <th scope="col">User mail</th>
-                <th scope="col">contact</th>
-                <th scope="col">address</th>
-               
-               
 
-              </tr>
-            </thead>
-           
-            <tbody>
-              <tr>
-               
-               <td>{{auth()->user()->email}}</td>
-                <td>{{$customers->contact}}</td>
-                <td>{{$customers->address}}</td>
-                <td>
-                 <a  href="{{route('reservationTable')}}"><i class="fas fa-eye"></i>
-                 <a  href="{{route('writeReview')}}"><i class="fas fa-eye"></i>
-                </td>
-               
-
-              </tr>
-
-             
-            </tbody>
-          </table>
-
-    </div>
-
-</div>
 @endsection
 

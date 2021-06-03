@@ -26,22 +26,23 @@
         </div>
         <div class="form-group">
             <label for="exampleInputName">Adult</label>
-            <input  value="{{$roomDetail->adult}}" name="price" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
+            <input  value="{{$roomDetail->adult}}" name="adult" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
 
         </div>
         <div class="form-group">
             <label for="exampleInputName">  Children</label>
-            <input  value="{{$roomDetail->children}}" name="price" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
+            <input  value="{{$roomDetail->children}}" name="children" type="text" class="form-control" id="exampleInputAddress" placeholder="Enter Price">
 
         </div>
             
             
-            <div class="form-group">
-                <label for="exampleInputRePicture">Upload Picture</label>
-                <input  value="{{$roomDetail->file}}" name="file" type="file" class="form-control" id="exampleInputRePicture" placeholder="Enter Photo">
-
-            </div>
-
+        <div class="form-group">
+                    <label class="fw-bolder">Image</label>
+                    <br>
+                    <img style="width: 150px;" class="mb-2" src="{{ url('/files/roomDetail/' . $roomDetail->roomImage) }}" alt="">
+                    <input name="file" type="file" class="form-control" value="{{ $roomDetail['file'] }}"
+                        src="" id="">
+                </div>
                 <br>
                 <button type="submit" class="btn btn-success">Submit</button>
 

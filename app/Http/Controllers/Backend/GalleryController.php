@@ -9,7 +9,7 @@ use App\Models\Gallery;
 class GalleryController extends Controller
 {
     public function gallery(){
-        $gallery=Gallery::all();
+        $gallery=Gallery::paginate(5);
         return view('backEnd.content.gallery.gallery',compact('gallery'));
     }
 

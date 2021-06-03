@@ -1,10 +1,10 @@
 @extends('backend.main')
 
 @section('content')
-<div style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
+<div  style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
 <!-- reservation table -->
-<h2 class="float-start text-light text-center border-buttom ">Reservation Details</h2>
-<table class="table my-3 " style="margin-right: 200px;">
+<h2 class="float-start text-dark text-center border-buttom  ">Reservation Details</h2>
+<table class="table table-hover table-striped table-es-sm table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -24,10 +24,10 @@
     </thead>
     <tbody>
     </div>
-     @foreach($reserve as $request)
+     @foreach($reserve as $key=> $request)
 
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{{$key+1}}</th>
             <td>{{$request->userReserve->name}}</td>
             <td>{{$request->checkIn_date}}</td>
             <td>{{$request->checkOut_date}}</td>

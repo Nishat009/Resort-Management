@@ -6,7 +6,7 @@
         <svg class="bi me-2" width="100" height="10" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
       </a>
 
-      <h1 class="  logo-words navbar-brand ms-end  "  ><ion-icon  class="logo-icon" name="home"></ion-icon>LastLine </h1>
+      <h1 class="  logo-words navbar-brand ms-end"><ion-icon  class="logo-icon" name="home"></ion-icon>LastLine </h1>
       <ul class="nav col-12 col-md-auto mb-2 justify-content-between mb-md-0">
   
         <li ><a href="{{route('home')}}" class="nav-link px-3 link-secondary">Home</a></li>
@@ -15,6 +15,7 @@
         
         <li><a href="{{route('room')}}" class="nav-link px-3 link-dark">Room</a></li>
         <li><a href="{{route('contact')}}" class="nav-link px-3 link-dark">Contact Us</a></li>
+      
         <li>
                             @auth()
                             <li class="nav-item">

@@ -1,5 +1,5 @@
 
-<div class=" navbar animate-navbar" style=" background-color: mintcream;">
+<div class=" navbar animate-navbar" style=" background-color: rgb(227, 250, 239);">
     <header class="d-flex ms-auto   justify-content-between py-3  ">
    
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">

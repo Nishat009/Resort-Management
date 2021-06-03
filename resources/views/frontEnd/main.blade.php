@@ -31,6 +31,7 @@
 <link href="/css/about.css" rel="stylesheet">
 <link href="/css/home.css" rel="stylesheet">
 <link href="/css/gallery.css" rel="stylesheet">
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;

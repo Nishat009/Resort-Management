@@ -7,13 +7,21 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+ 
+    
+<section>
+ 
+<div class=" float-end">
+                <button type="button" onclick="printDiv()" class="btn btn-success mx-3">Print</button>
+            </div>
 <div id="printArea">
 
-<div  style="background-color: #b4b7b7" class="table-responsive  mt-4 p-5 rounded shadow ">
+<div style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
 <!-- reservation table -->
-<h2 class="float-start text-light text-center border-buttom ">Reservation Details</h2>
+<h2 class="float-start text-dark text-center border-buttom ">Reservation Details</h2>
 
-<table class="table my-3 " style="margin-right: 200px;">
+
+<table class="table table-hover table-striped table-es-sm table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -80,13 +88,14 @@
 
         </tbody>
         </table>
+</section>
+
         
-        <div  >
-    <button type="button" onclick="printDiv()" class="btn btn-success mx-3 float-end">Print</button>
-</div>
+        
 </div>
         </div>
-        
+       
+            
         <script type="text/javascript">
                 function printDiv() {
                     var printContents = document.getElementById("printArea").innerHTML;
