@@ -22,8 +22,7 @@
         <th scope="col">Price</th>
         <th scope="col">Adult</th>
         <th scope="col">Children</th>
-        <th scope="col">Status</th>
-        <th scope="col">Action</th>
+        <th scope="col"></th>
 
       </tr>
     </thead>
@@ -39,7 +38,7 @@
             <td>{{$request->price}}</td>
             <td>{{$request->adult}}</td>
             <td>{{$request->children}}</td>
-           <td>{{$request->status}}</td>
+  
             
             <td>
             <div class="dropdown">

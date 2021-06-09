@@ -13,7 +13,8 @@
         <th scope="col">Check Out</th>
         <th scope="col">Adult</th>
         <th scope="col">Children</th>
-        <th scope="col">Room</th>
+        <th scope="col">t_id</th>
+        <th scope="col">pay_method</th>
         <th scope="col">Price</th>
         <th scope="col">Message</th>
         <th scope="col">Additional Service</th>
@@ -33,7 +34,8 @@
             <td>{{$request->checkOut_date}}</td>
             <td>{{$request->adult}}</td>
             <td>{{$request->children}}</td>
-            <td>{{$request->room}}</td>
+            <td>{{$request->t_id}}</td>
+            <td>{{$request->payment_method}} </td>
             <td>{{$request->price}}</td>
             <td>{{$request->message}}</td>
             <td>
@@ -47,42 +49,14 @@
 
             <td>
 
-            <!-- <div class="dropdown ">
-                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Action
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                     <li>
-                        
-                        @if ( $request->status == 'cancel')
-                        <a class="btn" href="{{route('reservationPaid',['id'=>$request->id,'status'=>'cancel'])}}">cancel</a>
-                        @else
-                        
-                        <a class="btn" href="{{route('reservationPaid',['id'=>$request->id,'status'=>'confirm'])}}">confirm</a>
-                        
-                        @endif
-                 </li>
-                        </ul>
-                    </div> -->
                     <div class="dropdown ">
                         <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Action
+                            <i class="bi bi-arrow-down-left-circle"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
-                     <!-- <li>
-                        
-                        @if ( $request->status == 'paid')
-                        <a class="btn" href="{{route('reservationPaid',['id'=>$request->id,'status'=>'unpaid'])}}">cancel</a>
-                        @else
-                        
-                        <a class="btn" href="{{route('reservationPaid',['id'=>$request->id,'status'=>'paid'])}}">paid</a>
-                        
-                        @endif
-                 </li> -->
+                    
                  @if($request->status=='pending')
                  <li>
                  <a class="btn btn-success" href=" {{ route('completeUpdate', ['id' => $request->id, 'status' => 'confirm']) }}">Confirm</a>
@@ -109,8 +83,7 @@
                     </div>
             </td>
 <td class="text-center">{{$request->status}}</td>
-            <!-- <td><a href="{{ route('completedUpdate', ['id' => $request->id, 'status' => 'confirm']) }}">confirm</a>/<a href="{{ route('completedUpdate', ['id' => $request->id, 'status' => 'reject']) }}">reject</a></td> -->
-            
+          
             
             
             

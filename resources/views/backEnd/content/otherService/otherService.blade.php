@@ -65,11 +65,7 @@
 
         </td>
 
-            <!-- <td>
-            <a class="btn btn-success" href="{{route('otherServiceEdit', $request->id)}}"> Edit</a>
-                <a class="btn btn-danger" href="{{route('otherServiceDelete', $request->id)}}"> Delete</a>
-
-            </td> -->
+           
         </tr>
         @endforeach
         </tbody>

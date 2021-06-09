@@ -56,7 +56,28 @@ class OtherServiceController extends Controller
     }
     
     public function otherServiceUpdate(Request $request ,$id){
-        OtherService::find($id)->update([
+
+        $serviceImage=otherService::find($id);
+        if ($request->hasFile('file')) {
+
+            $image_path = public_path().'/files/otherService/' . $serviceImage->image;
+    
+            if ($serviceImage->image) {
+                unlink($image_path);
+            }
+
+            $file_name='';
+
+            $file = $request -> file('file');
+            if ($file -> isValid()) {
+                $file_name = date('Ymdhms').'.'.$file -> getClientOriginalExtension();
+                $file -> storeAs('otherService',$file_name);
+            }
+            $serviceImage->update([
+                'file' => $file_name
+            ]);
+            }
+        $serviceImage->update([
             'service_type'=>$request->service_type,
             'price'=>$request->price,
             'service_detail'=>$request->service_detail,

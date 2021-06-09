@@ -45,7 +45,8 @@
         <th scope="col">Check Out</th>
         <th scope="col">Adult</th>
         <th scope="col">Children</th>
-        <th scope="col">Room</th>
+        <th scope="col">t_id</th>
+        <th scope="col">pay_method</th>
         <th scope="col">Price</th>
         <th scope="col">Message</th>
         <th scope="col">Additional Service</th>
@@ -65,7 +66,8 @@
             <td>{{$request->checkOut_date}}</td>
             <td>{{$request->adult}}</td>
             <td>{{$request->children}}</td>
-            <td>{{$request->room}}</td>
+            <td>{{$request->t_id}}</td>
+            <td>{{$request->payment_method}} </td>
             <td>{{$request->price}}</td>
             <td>{{$request->message}}</td>
             <td>

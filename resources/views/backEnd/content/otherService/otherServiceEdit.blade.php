@@ -26,11 +26,13 @@
         </div>
             
             
-            <div class="form-group">
-                <label for="exampleInputRePicture">Upload Picture</label>
-                <input  value="{{$otherService->file}}" name="file" type="file" class="form-control" id="exampleInputRePicture" placeholder="Enter Photo">
-
-            </div>
+        <div class="form-group">
+                    <label class="fw-bolder">Image</label>
+                    <br>
+                    <img style="width: 150px;" class="mb-2" src="{{ url('/files/otherService/' . $otherService->serviceImage) }}" alt="">
+                    <input name="file" type="file" class="form-control" value="{{ $otherService['file'] }}"
+                        src="" id="">
+                </div>
                 <br>
                 <button type="submit" class="btn btn-success">Submit</button>
 
