@@ -9,6 +9,7 @@ use App\Models\RoomDetail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReservationConfirm;
+use App\Mail\ReservationCancel;
 class ReservationController extends Controller
 {
     
@@ -20,13 +21,15 @@ class ReservationController extends Controller
     {
         $reserve= RoomReservation::find($id);
         $roomSearch=RoomDetail::find($reserve->room_id);
-        
+        $customer = User::where('id', $reserve->user_id)->first();
         if($status=='confirm'){
             $reserve->update(['status'=>$status]);
+            Mail::to($customer->email)->send(new ReservationConfirm($reserve));
         }
         if($status=='reject'){
             $reserve->update(['status'=>$status]);
             $roomSearch->update(['status'=>'available']);
+            Mail::to($customer->email)->send(new ReservationCancel($reserve));
         }
 
         
@@ -49,14 +52,14 @@ class ReservationController extends Controller
                 'paid_status' => $status,
                 
             ]);
-            Mail::to($customer->email)->send(new ReservationCancel($reservationCancel));
+           
         }else{
             $reservation->update([
                 'status' => 'confirm',
                 'paid_status' => $status
                
             ]);
-            Mail::to($customer->email)->send(new ReservationConfirm($reservation));
+            
             
             RoomDetail::find($reservation->room_id)->update([ 'checkIn_date'=>$reservation->checkIn_date,
             'checkOut_date'=>$reservation->checkOut_date]);

@@ -22,7 +22,9 @@ class CustomerController extends Controller
             
            'name'=>'required',
            'email'=>'email|required|unique:users',
+           'contact' => 'required|digits:11|numeric|unique:employees',
             'password'=>'required|min:6'
+            
         ]);
         
     $U=User::create([

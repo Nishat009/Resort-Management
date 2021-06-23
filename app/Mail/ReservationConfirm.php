@@ -18,9 +18,9 @@ class ReservationConfirm extends Mailable
      
      */
     protected $reservation;
-    public function __construct($reservation)
+    public function __construct($reserve)
     {
-        $this -> reservation = $reservation;
+        $this -> reservation = $reserve;
 
     }
 

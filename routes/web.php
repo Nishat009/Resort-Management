@@ -114,7 +114,7 @@ Route::group(['prefix' => 'user'], function () {
 // user profile
 Route::get('/userProfile',[CustomerController::class,'userProfile'])->name('userProfile');
 //user reservation
-Route::get('/roomReservation/get/{id}',[RoomReservationController::class,'roomReservation'])->name('roomReservation');
+Route::get('/roomReservation/get/{id}/{checkInDate}/{checkOutDate}',[RoomReservationController::class,'roomReservation'])->name('roomReservation');
 Route::post('/reservation',[RoomReservationController::class,'reservation'])->name('reservation');
 Route::get('/reservationTable',[RoomReservationController::class,'reservationTable'])->name('reservationTable');
 Route::get('/cancelUpdate/{id}', [RoomReservationController::class, 'cancelUpdate'])->name('cancelUpdate');

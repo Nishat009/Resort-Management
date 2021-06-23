@@ -67,11 +67,12 @@
             
 
             </td>
-            
+             
         </tr>
         @endforeach
         </tbody>
-   
+        </table>
+        {{$roomDetail->links()}}
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -82,7 +83,7 @@
         </div>
 
         <form method="post" action="{{route('roomDetailCreate')}}" enctype="multipart/form-data">
-
+       
 
 @csrf
         <div class="modal-body">

@@ -13,6 +13,12 @@ class ContactUsController extends Controller
     }
     public function reservation(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'email|required|unique:contactUs',
+            'phone' => 'required|digits:11|numeric|unique:contactUs',
+            'address' => 'required'
+        ]);
        
             RoomReservation::create([
 

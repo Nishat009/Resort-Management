@@ -37,6 +37,13 @@ class EmployeeManageController extends Controller
             $file->storeAs('photo',$file_name);
         }
     }
+    $request->validate([
+        'name' => 'required',
+        'workingArea' => 'required',
+        'email' => 'email|required|unique:employees',
+        'contact' => 'required|digits:11|numeric|unique:employees',
+        'address' => 'required',
+    ]);
         Employee::create([
             'file' => $file_name,
             'name'=>$request->name,
@@ -46,7 +53,7 @@ class EmployeeManageController extends Controller
             'address'=>$request->address
             ]);
 
-            return redirect()->back();
+            return redirect()->back()->with('error-message','Invalid selection.');
     }
     public function employeeDelete($id)
     {

@@ -9,7 +9,7 @@ class RoomDetailController extends Controller
 {
     public function roomDetail(){
 
-        $roomDetail=RoomDetail::all();
+        $roomDetail=RoomDetail::paginate(5);
         return view('backend.content.roomDetail.roomDetail',compact('roomDetail'));
     }
     public function roomDetailCreate(Request $request)
@@ -110,7 +110,7 @@ class RoomDetailController extends Controller
             
             
         }
-        return view('frontend.content.searchRoom',compact('search'));
+        return view('frontend.content.searchRoom',compact('search','checkInDate','checkOutDate'));
         
     }
     public function RoomUpdate( $id, $status)

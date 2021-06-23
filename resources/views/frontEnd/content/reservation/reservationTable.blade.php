@@ -11,9 +11,7 @@
     
 <section>
  
-<div class=" float-end">
-                <button type="button" onclick="printDiv()" class="btn btn-success mx-3">Print</button>
-            </div>
+
 <div id="printArea">
 
 <div style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
@@ -32,6 +30,7 @@
         <th scope="col">Adult</th>
         <th scope="col">Children</th>
         <th scope="col">t_id</th>
+        <th scope="col">t_phone</th>
         <th scope="col">pay_method</th>
         <th scope="col">Price</th>
         <th scope="col">Message</th>
@@ -63,6 +62,7 @@
             <td>{{$request->adult}}</td>
             <td>{{$request->children}}</td>
             <td>{{$request->t_id}}</td>
+            <td>{{$request->t_phone}}</td>
             <td>{{$request->payment_method}} </td>
             <td>{{$request->price}}</td>
             <td>{{$request->message}}</td>
@@ -92,7 +92,9 @@
         </table>
 </section>
 
-        
+<div class=" float-end">
+                <button type="button" onclick="printDiv()" class="btn btn-success mx-3">Print</button>
+            </div>     
         
 </div>
         </div>

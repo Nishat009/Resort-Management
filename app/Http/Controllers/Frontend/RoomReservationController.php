@@ -10,11 +10,12 @@ use App\Models\OtherService;
 use Carbon\Carbon;
 class RoomReservationController extends Controller
 {
-    public function RoomReservation($id)
+   
+    public function RoomReservation($id,$checkInDate,$checkOutDate)
     {
         $reserve=RoomDetail::find($id);
         $service=OtherService::where('status','published')->get();
-        return view('frontend.content.reservation.reservation',compact('reserve','service'));
+        return view('frontend.content.reservation.reservation',compact('reserve','service','checkInDate','checkOutDate'));
     }
     public function reservation(Request $request)
     {
@@ -46,7 +47,12 @@ class RoomReservationController extends Controller
    else{
     $roomPrice = $diffDays * ($roomPricePerDay);
    }
-      
+   $request->validate([
+   't_id' => 'required|size:10|unique:room_reservations',
+   'contact' => 'required|digits:11|numeric:room_reservations',
+   
+]);
+   
      
             RoomReservation::create([
 

@@ -59,14 +59,14 @@
 
             <div class="form-group">
                 <label for="exampleInputRePicture">Upload Picture</label>
-                <input name="file" type="file" class="form-control" id="exampleInputRePicture" placeholder="Enter service Picture">
+                <input name="file" type="file" class="form-control" id="exampleInputRePicture" placeholder="Enter room Picture">
 
             </div>
 
         </div>
         <div class="modal-footer">
           
-          <button type="submit" class="btn btn-primary" style="margin-right: 385px;">Register</button>
+          <button type="submit" class="btn btn-primary" style="margin-right: 385px;">Add new image</button>
         </div>
 
     </form>

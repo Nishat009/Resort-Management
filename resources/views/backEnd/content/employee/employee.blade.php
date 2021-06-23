@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger d-flex justify-content-between">{{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
 <div style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
 
  <!-- Button trigger modal -->
@@ -9,7 +16,7 @@
  <button style=" background-color:#BB2D3B" type="button" class="btn text-light mt-5 mx-3 float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Register New Employee</button>
 
-
+    
 
 {{-- Employee Details table --}}
 <table class="table table-hover table-striped table-es-sm table-bordered">

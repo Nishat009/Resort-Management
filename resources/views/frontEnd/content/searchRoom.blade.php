@@ -34,7 +34,7 @@
                         </div>
                        
 
-                        <a class ="btn "style=" background-color: mintcream;border:1px solid black" href="{{route('roomReservation', $data->id)}} ">Reserve Room</a>
+                        <a class ="btn "style=" background-color: mintcream;border:1px solid black" href="{{route('roomReservation', [$data->id, $checkInDate,$checkOutDate])}} ">Reserve Room</a>
                       
                     </div>
                 </div>

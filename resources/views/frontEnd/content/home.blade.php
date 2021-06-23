@@ -2,10 +2,6 @@
 @section('content')
 
 
-<link href="css/slider.css" rel="stylesheet">
-
-<section class=" text-center fluid-container">
-
 
    <div class="row">
    <div >
@@ -71,6 +67,10 @@
 </div>
 </section>
 
+
+ 
+
+
     <!-- for other services -->
     
     <section style=" background-color: mintcream;" class="p-5 text-center border-bottom">
@@ -93,11 +93,11 @@
         <img class="w-100 h-100" src="{{url('/files/otherService/'.$data->file)}}" class="card-img-top" alt="">
                         
         <div class="card-body">
-                        <p class="card-text">Course Title: {{$data->service_type}}</p>
-                        <p class="card-text">{{$data->service_detail}}</p>
+                        <p class="card-text">Service Name: {{$data->service_type}}</p>
+                        <p class="card-text">Service Details:{{$data->service_detail}}</p>
                         <div class=" d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <small class="text-secodary">{{$data->price}} BDT</small>
+                                <small class="text-secodary">Service Price{{$data->price}} BDT</small>
                             </div>
 
                            
@@ -115,7 +115,24 @@
 </section>
 
 
+<!-- extra section -->
+<section style="height:550px;" class="row d-flex align-items-center w-100 mb-5  ">
+        <div class="col-md-5 offset-md-1 mt-5 mb-5">
+            <h1 style="color: #3A4256;"><span style="color: #dd7140;">Hi there!!!!!</span>
+            <p class="text-secondary fs-5">Welcome to Our Resort</p>
+            <p class="text-secondary fs-5">you can book our room according to your preference also add some service if your want. </p>
+            <span style="color: #dd7140;">Thank You......</span><br>
 
+           
+            <a type="button" class="btn btn-danger" href="{{route('room')}}">Check our room !!!!</a>
+
+        </div>
+        <div class="col-md-6 mt-4 ">
+            <img src="https://images.unsplash.com/photo-1616064959886-a500e5c38e1e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt=""
+                class="img-fluid " />
+        </div>
+
+    </section>
 <!-- review -->
 
 <section  style=" background-color: mintcream;" class="p-5 text-center border-bottom">
@@ -152,4 +169,5 @@
     </div>
    
 </section>
+
 @endsection

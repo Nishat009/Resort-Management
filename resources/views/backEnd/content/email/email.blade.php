@@ -8,6 +8,10 @@
     <title>Reservation</title>
 </head>
 <body>
-<h1 style="background-color: #ff0000">Reservation successfully</h1>
-
+<h1 >Your reservation for</h1>
+<p>room type:{{$reservationData->roomReserve->room_type}}</p>
+<p>checkIn date:{{$reservationData->checkIn_date}}</p>
+<p>checkIn date: {{$reservationData->checkOut_date}}</p>
+<p>Price{{$reservationData->price}}</p>
+<p>has been done successfully. thank you for giving us opportunity to provide you the best service </p>
 </html>

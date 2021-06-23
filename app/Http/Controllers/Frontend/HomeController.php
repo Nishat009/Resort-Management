@@ -8,6 +8,7 @@ use App\Models\RoomDetail;
 use App\Models\Review;
 use App\Models\OtherService;
 use App\Models\Contact;
+use App\Models\Gallery;
 class HomeController extends Controller
 {
    public function home(){
@@ -15,14 +16,16 @@ class HomeController extends Controller
        $otherService=OtherService::where('status','=','published')->take(3)->get();
        $publishRoom=RoomDetail::where('publishedStatus','published')->get();
        $review=Review::all();
+       $seeGallery=Gallery::all();
        
-       return view('frontEnd.content.home',compact('roomDetail','otherService','review','publishRoom'));
+       return view('frontEnd.content.home',compact('roomDetail','otherService','review','publishRoom','seeGallery'));
    }
    public function viewAllServices(){
     $services=OtherService::all();
 
     return view('frontEnd.content.otherServicePage',compact('services'));
 }
+
 public function room(){
     
     $room=RoomDetail::all();
