@@ -9,7 +9,7 @@ use App\Models\Employee;
 use App\Models\Gallery;
 use App\Models\RoomReservation;
 use App\Models\OtherService;
-
+use App\Models\Contact;
 class DashboardController extends Controller
 {
     public function dashboard()
@@ -24,6 +24,8 @@ class DashboardController extends Controller
         $totalReservation = $reservation->count();
         $service = OtherService::all();
         $totalService = $service->count();
-        return view('backEnd.content.dashboard.dashboard', compact('totalRoom', 'totalEmployee', 'totalReservation', 'totalService', 'totalImage'));
+        $contact=Contact::all();
+        $totalContact=$contact->count();
+        return view('backEnd.content.dashboard.dashboard', compact('totalRoom', 'totalEmployee', 'totalReservation', 'totalService', 'totalImage','totalContact'));
     }
 }

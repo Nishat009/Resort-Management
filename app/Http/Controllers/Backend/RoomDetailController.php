@@ -104,8 +104,17 @@ class RoomDetailController extends Controller
             $search = RoomDetail::whereNotIn('id', function($query) use ($checkInDate, $checkOutDate){
                 $query->from('room_reservations')
                 ->select('room_id')
-                ->whereBetween('checkIn_date', [$checkInDate, $checkOutDate])
-                ->orWhereBetween('checkOut_date', [$checkInDate, $checkOutDate]);
+                ->where('status','!=','reject')
+                ->whereBetween('checkIn_date', [$checkInDate, $checkOutDate]);
+                
+            })
+            ->whereNotIn('id', function($query) use ($checkInDate, $checkOutDate){
+                $query->from('room_reservations')
+                ->select('room_id')
+                ->where('status','!=','reject')
+                ->whereBetween('checkOut_date', [$checkInDate, $checkOutDate])
+                ;
+                
             })->get();
             
             
