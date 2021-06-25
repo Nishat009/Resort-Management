@@ -8,9 +8,10 @@ use App\Models\Gallery;
 
 class ImageController extends Controller
 {
-    public function seeGallery(){
+    public function seeGallery()
+    {
 
-        $seeGallery=Gallery::all();
+        $seeGallery = Gallery::all();
         return view('frontEnd.content.gallery.gallery', compact('seeGallery'));
     }
 }

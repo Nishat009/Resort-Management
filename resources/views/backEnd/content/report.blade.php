@@ -4,14 +4,14 @@
 
 
 <div style=" background-color: rgb(227, 250, 239);" class="table-responsive  mt-4 p-5 rounded shadow ">
-<form action={{ route('report') }} method="GET">
+    <form action={{ route('report') }} method="GET">
 
-        
+
 
         <div class="row">
             <div class="col-md-8">
                 <div class=" row">
-                   
+
 
                     <div class="col-md-6">
                         <label for="from">Date From:</label>
@@ -31,33 +31,33 @@
         </div>
     </form>
 
-<!-- reservation table -->
-<div id="printArea">
+    <!-- reservation table -->
+    <div id="printArea">
 
         <div style="overflow-x:auto;">
-<h2 class="float-start text-dark text-center border-bottom ">Report</h2>
-<table class="table my-3 " style="margin-right: 200px;">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">user_name</th>
-        <th scope="col">Check In</th>
-        <th scope="col">Check Out</th>
-        <th scope="col">Adult</th>
-        <th scope="col">Children</th>
-        <th scope="col">t_id</th>
-        <th scope="col">pay_method</th>
-        <th scope="col">Price</th>
-        <th scope="col">Message</th>
-        <th scope="col">Additional Service</th>
-        <th scope="col">Payment Status</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-    </div>
-    @if ($reserve->count() > 0)
-     @foreach($reserve as $key=> $request)
+            <h2 class="float-start text-dark text-center border-bottom ">Report</h2>
+            <table class="table my-3 " style="margin-right: 200px;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">user_name</th>
+                        <th scope="col">Check In</th>
+                        <th scope="col">Check Out</th>
+                        <th scope="col">Adult</th>
+                        <th scope="col">Children</th>
+                        <th scope="col">t_id</th>
+                        <th scope="col">pay_method</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Additional Service</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+        </div>
+        @if ($reserve->count() > 0)
+        @foreach($reserve as $key=> $request)
 
         <tr>
             <th scope="row">{{$key+1}}</th>
@@ -71,44 +71,43 @@
             <td>{{$request->price}}</td>
             <td>{{$request->message}}</td>
             <td>
-            @if($request->service_id)
-            {{$request->serviceReserve->service_type}}
-            @else
-            no additional service added
-            @endif
+                @if($request->service_id)
+                {{$request->serviceReserve->service_type}}
+                @else
+                no additional service added
+                @endif
             </td>
             <td>{{$request->paid_status}} </td>
-           <td>{{$request->status}}</td>
-          
-            
-            
-            
+            <td>{{$request->status}}</td>
+
+
+
+
         </tr>
         @endforeach
         @else
 
-                    <td>
-                        <h4>No Data Found!</h4>
-                    </td>
+        <td>
+            <h4>No Data Found!</h4>
+        </td>
 
 
-                @endif
+        @endif
         </tbody>
         </table>
-        </div>
-        </div>
-        </div>
-        <script type="text/javascript">
-        function printDiv() {
-            var printContents = document.getElementById("printArea").innerHTML;
-            var originalContents = document.body.innerHTML;
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    function printDiv() {
+        var printContents = document.getElementById("printArea").innerHTML;
+        var originalContents = document.body.innerHTML;
 
-            document.body.innerHTML = printContents;
+        document.body.innerHTML = printContents;
 
-            window.print();
+        window.print();
 
-            document.body.innerHTML = originalContents;
-        }
-
-    </script>
-        @endsection
+        document.body.innerHTML = originalContents;
+    }
+</script>
+@endsection

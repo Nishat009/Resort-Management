@@ -20,8 +20,7 @@ class ReservationConfirm extends Mailable
     protected $reservation;
     public function __construct($reserve)
     {
-        $this -> reservation = $reserve;
-
+        $this->reservation = $reserve;
     }
 
     /**
@@ -31,8 +30,6 @@ class ReservationConfirm extends Mailable
      */
     public function build()
     {
-        return $this->view('backEnd.content.email.email')->with(['reservationData'=>$this -> reservation]);
+        return $this->view('backEnd.content.email.email')->with(['reservationData' => $this->reservation]);
     }
-
-   
 }

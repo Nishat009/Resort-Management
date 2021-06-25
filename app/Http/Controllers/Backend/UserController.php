@@ -18,10 +18,7 @@ class UserController extends Controller
     public function doLogin(Request $request)
     {
 
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
+
 
 
 
@@ -32,16 +29,12 @@ class UserController extends Controller
 
             if (auth()->user()->role == 'admin') {
                 return redirect()->route('dashboard');
-            }
-
-            elseif (auth()->user()->role == 'user') {
+            } elseif (auth()->user()->role == 'user') {
                 auth()->logout();
 
                 return back()->withErrors([
                     'email' => 'Invalid Credentials.'
-                    ]);
-
-
+                ]);
             }
         }
         return back()->withErrors([
@@ -56,5 +49,4 @@ class UserController extends Controller
 
         return redirect()->route('login')->with('success', 'Logout Successful.');
     }
-
 }

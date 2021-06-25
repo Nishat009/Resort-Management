@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class Admin
 {
     /**
@@ -19,15 +20,12 @@ class Admin
         if (Auth::check()) {
             if (Auth::user()->role == 'admin') {
                 return $next($request);
-            }
-            else{
+            } else {
                 Auth::logout();
-                return redirect()->route('login')->with('error','You are not an Admin.');
+                return redirect()->route('login')->with('error', 'You are not an Admin.');
             }
-
         } else {
-            return redirect() -> route('login');
+            return redirect()->route('login');
         }
-
     }
 }

@@ -1,45 +1,45 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use App\Models\OtherService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class OtherServiceController extends Controller
 {
-    public function otherService(){
+    public function otherService()
+    {
 
-        $otherService=OtherService::all();
-        return view('backend.content.otherService.otherService',compact('otherService'));
+        $otherService = OtherService::all();
+        return view('backend.content.otherService.otherService', compact('otherService'));
     }
     public function otherServiceCreate(Request $request)
     {
-        $file_name='';
+        $file_name = '';
         //step1: check request has file?
-        if($request->hasFile('file'))
-        {
+        if ($request->hasFile('file')) {
             //file is valid or not
-            $file=$request->file('file');
-            if($file->isValid())
-            {
+            $file = $request->file('file');
+            if ($file->isValid()) {
                 //generate unique file name
-                $file_name=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+                $file_name = date('Ymdhms') . '.' . $file->getClientOriginalExtension();
 
                 //store image into local directory
-                $file->storeAs('otherService',$file_name);
+                $file->storeAs('otherService', $file_name);
             }
-
         }
-        OtherService:: create([
-            'service_type'=>$request->service_type,
-            'price'=>$request->price,
-            'service_detail'=>$request->service_detail,
-            'file'=>$file_name ]);
+        OtherService::create([
+            'service_type' => $request->service_type,
+            'price' => $request->price,
+            'service_detail' => $request->service_detail,
+            'file' => $file_name
+        ]);
         return redirect()->back();
     }
     public function otherServiceDelete($id)
     {
-     // dd($id);
+        // dd($id);
         //first get the product
         $otherService = OtherService::find($id);
 
@@ -52,48 +52,47 @@ class OtherServiceController extends Controller
     public function otherServiceEdit($id)
     {
         $otherService = OtherService::find($id);
-     return view('backend.content.otherService.otherServiceEdit',compact('otherService'));
+        return view('backend.content.otherService.otherServiceEdit', compact('otherService'));
     }
-    
-    public function otherServiceUpdate(Request $request ,$id){
 
-        $serviceImage=otherService::find($id);
+    public function otherServiceUpdate(Request $request, $id)
+    {
+
+        $serviceImage = otherService::find($id);
         if ($request->hasFile('file')) {
 
-            $image_path = public_path().'/files/otherService/' . $serviceImage->image;
-    
+            $image_path = public_path() . '/files/otherService/' . $serviceImage->image;
+
             if ($serviceImage->image) {
                 unlink($image_path);
             }
 
-            $file_name='';
+            $file_name = '';
 
-            $file = $request -> file('file');
-            if ($file -> isValid()) {
-                $file_name = date('Ymdhms').'.'.$file -> getClientOriginalExtension();
-                $file -> storeAs('otherService',$file_name);
+            $file = $request->file('file');
+            if ($file->isValid()) {
+                $file_name = date('Ymdhms') . '.' . $file->getClientOriginalExtension();
+                $file->storeAs('otherService', $file_name);
             }
             $serviceImage->update([
                 'file' => $file_name
             ]);
-            }
+        }
         $serviceImage->update([
-            'service_type'=>$request->service_type,
-            'price'=>$request->price,
-            'service_detail'=>$request->service_detail,
-            
+            'service_type' => $request->service_type,
+            'price' => $request->price,
+            'service_detail' => $request->service_detail,
+
         ]);
-        return redirect()->route('otherService'); 
+        return redirect()->route('otherService');
     }
 
-    public function completedUpdate( $id, $status)
+    public function completedUpdate($id, $status)
     {
-        $otherService= OtherService::find($id);
+        $otherService = OtherService::find($id);
 
-        $otherService->update(['status'=>$status]);
+        $otherService->update(['status' => $status]);
 
         return redirect()->back();
     }
-
-
 }

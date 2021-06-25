@@ -9,52 +9,56 @@ use App\Models\Review;
 use App\Models\OtherService;
 use App\Models\Contact;
 use App\Models\Gallery;
+
 class HomeController extends Controller
 {
-   public function home(){
-       $roomDetail=RoomDetail::where('status','available')->get();
-       $otherService=OtherService::where('status','=','published')->take(3)->get();
-       $publishRoom=RoomDetail::where('publishedStatus','published')->get();
-       $review=Review::all();
-       $seeGallery=Gallery::all();
-       
-       return view('frontEnd.content.home',compact('roomDetail','otherService','review','publishRoom','seeGallery'));
-   }
-   public function viewAllServices(){
-    $services=OtherService::all();
-
-    return view('frontEnd.content.otherServicePage',compact('services'));
-}
-
-public function room(){
-    
-    $room=RoomDetail::all();
-
-    return view('frontEnd.content.viewRoom',compact('room'));
-}
-public function contact(){
-    
-    
-
-    return view('frontEnd.content.contactUs');
-}
-public function contactForm(Request $request)
+    public function home()
     {
-       
-            Contact::create([
+        $roomDetail = RoomDetail::where('status', 'available')->get();
+        $otherService = OtherService::where('status', '=', 'published')->take(3)->get();
+        $publishRoom = RoomDetail::where('publishedStatus', 'published')->get();
+        $review = Review::all();
+        $seeGallery = Gallery::all();
 
-                'name'=>$request->name,
-                'email'=>$request->email,
-                'address'=>$request->address,
-                'phone'=>$request->phone,
-                'message'=>$request->message,
-                
-                
-            ]);
-           
-          
+        return view('frontEnd.content.home', compact('roomDetail', 'otherService', 'review', 'publishRoom', 'seeGallery'));
+    }
+    public function viewAllServices()
+    {
+        $services = OtherService::all();
 
-            return redirect()->route('home');
+        return view('frontEnd.content.otherServicePage', compact('services'));
     }
 
+    public function room()
+    {
+
+        $room = RoomDetail::all();
+
+        return view('frontEnd.content.viewRoom', compact('room'));
+    }
+    public function contact()
+    {
+
+
+
+        return view('frontEnd.content.contactUs');
+    }
+    public function contactForm(Request $request)
+    {
+
+        Contact::create([
+
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'message' => $request->message,
+
+
+        ]);
+
+
+
+        return redirect()->route('home');
+    }
 }
