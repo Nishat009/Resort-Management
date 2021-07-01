@@ -110,7 +110,7 @@ Route::get('/userLogout',[CustomerController::class,'userLogout'])->name('userLo
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'user-auth'], function () {
 
-
+  
 // user profile 
 Route::get('/userProfile',[CustomerController::class,'userProfile'])->name('userProfile');
 //user reservation
