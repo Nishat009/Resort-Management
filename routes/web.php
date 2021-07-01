@@ -111,7 +111,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'user-auth'], function () {
 
 
-// user profile
+// user profile 
 Route::get('/userProfile',[CustomerController::class,'userProfile'])->name('userProfile');
 //user reservation
 Route::get('/roomReservation/get/{id}/{checkInDate}/{checkOutDate}',[RoomReservationController::class,'roomReservation'])->name('roomReservation');
